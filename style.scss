@@ -89,19 +89,22 @@ header {
         padding: 0.5rem;
         border-radius: 8px;
         margin-bottom: 1rem;
-        position: relative;
-        padding-bottom: 70px;
+        // position: relative;
+        // padding-bottom: 80px;
+        height:fit-content;
         .item {
             background-color: rgba($black, 0.6);
             padding: 0.5rem 1rem;
             border-radius: 5px;
             margin-bottom: 0.5rem;
+            cursor: pointer;
         }
         footer {
-            position: absolute;
-            bottom: 0;
-            height: 70px;
+            // position: absolute;
+            // bottom: 0;
+            // height: 70px;
             padding: 0.5rem 1rem;
+            cursor: pointer;
         }
     }
 }

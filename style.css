@@ -106,8 +106,9 @@ header .on-hold {
   padding: 0.5rem;
   border-radius: 8px;
   margin-bottom: 1rem;
-  position: relative;
-  padding-bottom: 70px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .kanban-container .kanban-item .item {
@@ -115,13 +116,12 @@ header .on-hold {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .kanban-container .kanban-item footer {
-  position: absolute;
-  bottom: 0;
-  height: 70px;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 2640px) {
