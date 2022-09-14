@@ -1,3 +1,4 @@
+@import url("https://use.typekit.net/sar2ezz.css");
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -10,6 +11,11 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: houschka-rounded,sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #fff;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
 }
 
 body::before {
@@ -21,5 +27,24 @@ body::before {
   bottom: 0px;
   left: 0px;
   opacity: 0.5;
+  z-index: -1;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=style.css.map */

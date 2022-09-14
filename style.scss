@@ -1,3 +1,4 @@
+@import url("https://use.typekit.net/sar2ezz.css");
 
 $teal: #1a5b61;
 $ligthteal: #1a5b61;
@@ -18,6 +19,11 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: houschka-rounded,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: $white;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
     &::before {
         content: "";
         background-color: $black;
@@ -27,5 +33,19 @@ body {
         bottom: 0px;
         left: 0px;
         opacity: 0.5;
+        z-index: -1;
     }
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 48px;
+}
+
+h2 {
+    font-weight: 600;
+}
+.container {
+    display: flex;
+    justify-content: center;
 }
