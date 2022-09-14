@@ -63,7 +63,7 @@ header {
         border-radius: 7px;
         margin: none;
     }
-    .backlay {
+    .backlog {
         background-color: $yellow;
     }
     .in-progress {
@@ -79,15 +79,18 @@ header {
 
 .kanban-container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
+    align-content: space-around;
     .kanban-item {
         width: 250px;
         background-color: rgba($black, 0.4);
-        padding: 0.5rem 1rem;
+        padding: 0.5rem;
         border-radius: 8px;
+        margin-bottom: 1rem;
         .item {
-            background-color: rgba($black, 0.4);
+            background-color: rgba($black, 0.6);
             padding: 0.5rem 1rem;
             border-radius: 5px;
             margin-bottom: 0.5rem;
