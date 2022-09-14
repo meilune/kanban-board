@@ -1,7 +1,7 @@
 @import url("https://use.typekit.net/sar2ezz.css");
 
-$teal: #1a5b61;
-$ligthteal: #1a5b61;
+$teal: #1d4045;
+$ligthteal: #33777d;
 $ligthblue: #83d3d4;
 $red: #902617;
 $yellow: #e2ad3b;
@@ -40,12 +40,60 @@ body {
 h1 {
     font-weight: 700;
     font-size: 48px;
+    text-align: center;
 }
 
 h2 {
     font-weight: 600;
+    margin: auto;
 }
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+    h2 {
+        padding: 0.5rem;
+        border-radius: 7px;
+        margin: none;
+    }
+    .backlay {
+        background-color: $yellow;
+    }
+    .in-progress {
+        background-color: $teal;
+    }
+    .complete {
+        background-color: $ligthteal;
+    }
+    .on-hold {
+        background-color: $red;
+    }
+}
+
+.kanban-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    .kanban-item {
+        width: 250px;
+        background-color: rgba($black, 0.4);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        .item {
+            background-color: rgba($black, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            padding: 0.5rem 1rem;
+        }
+    }
 }

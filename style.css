@@ -33,18 +33,84 @@ body::before {
 h1 {
   font-weight: 700;
   font-size: 48px;
+  text-align: center;
 }
 
 h2 {
   font-weight: 600;
+  margin: auto;
 }
 
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+header h2 {
+  padding: 0.5rem;
+  border-radius: 7px;
+  margin: none;
+}
+
+header .backlay {
+  background-color: #e2ad3b;
+}
+
+header .in-progress {
+  background-color: #1d4045;
+}
+
+header .complete {
+  background-color: #33777d;
+}
+
+header .on-hold {
+  background-color: #902617;
+}
+
+.kanban-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.kanban-container .kanban-item {
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.kanban-container .kanban-item .item {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.kanban-container .kanban-item footer {
+  padding: 0.5rem 1rem;
 }
 /*# sourceMappingURL=style.css.map */
