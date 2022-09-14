@@ -1,0 +1,31 @@
+
+$teal: #1a5b61;
+$ligthteal: #1a5b61;
+$ligthblue: #83d3d4;
+$red: #902617;
+$yellow: #e2ad3b;
+$black: #000;
+$white: #fff;
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("/forest.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &::before {
+        content: "";
+        background-color: $black;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.5;
+    }
+}
