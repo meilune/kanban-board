@@ -89,6 +89,8 @@ header {
         padding: 0.5rem;
         border-radius: 8px;
         margin-bottom: 1rem;
+        position: relative;
+        padding-bottom: 70px;
         .item {
             background-color: rgba($black, 0.6);
             padding: 0.5rem 1rem;
@@ -96,7 +98,19 @@ header {
             margin-bottom: 0.5rem;
         }
         footer {
+            position: absolute;
+            bottom: 0;
+            height: 70px;
             padding: 0.5rem 1rem;
         }
     }
 }
+
+@media screen and (min-width: 2640px) {
+    .kanban-container {
+        .kanban-item {
+            width: 450px;
+        }
+    }
+}
+
