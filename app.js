@@ -49,46 +49,50 @@ function updateSavedColumns() {
     })
 }
 
-updateSavedColumns();
-
-//Update the DOM
-function updateDOM() {
-    //Check local Storage once
-    if(!updatedOnLoad) {
-        getSavedColumns();
-    }
-    //Backlog Lists
-    backlogList.textContent = "";
-    backlogListArray.forEach((list) => {
-        const item = document.createElement("li");
-        item.classList.add("item");
-        item.textContent = list;
-        backlogList.appendChild(item);
-    })
-    //Progress Lists
-    progressListArray.forEach((list) => {
-        const item = document.createElement("li");
-        item.classList.add("item");
-        item.textContent = list;
-        progressList.appendChild(item);
-    })
-    //Completed Lists
-    completeListArray.forEach((list) => {
-        const item = document.createElement("li");
-        item.classList.add("item");
-        item.textContent = list;
-        completeList.appendChild(item);
-    })
-    //On Hold Lists
-    onHoldListArray.forEach((list) => {
-        const item = document.createElement("li");
-        item.classList.add("item");
-        item.textContent = list;
-        onHoldList.appendChild(item);
-    })
+//Creating the DOM
+function createDOMEl(columnEl, column, items, index) {
+    const item = document.createElement("li");
+    item.classList.add("item");
+    item.textContent = items;
+    columnEl.appendChild(item);
 }
 
 
+
+//Update the DOM
+function updateDOM() {
+    if(!updatedOnLoad) {
+        getSavedColumns();
+    };
+    
+    //Backlog Lists
+    backlogList.textContent = "";
+    backlogListArray.forEach((list, index) => {
+        createDOMEl(backlogList, 0, list, index);
+        console.log(list);
+    });
+
+    //Progress Lists
+    progressList.textContent = "";
+    progressListArray.forEach((list, index) => {
+        createDOMEl(progressList, 0, list, index);
+    });
+
+    //Completed Lists
+    completeList.textContent = "";
+    completeListArray.forEach((list, index) => {
+        createDOMEl(completeList, 0, list, index);
+    });
+
+    //On Hold Lists
+    onHoldList.textContent = "";
+    onHoldListArray.forEach((list, index) => {
+        createDOMEl(onHoldList, 0, list, index);
+    });
+    updateSavedColumns();
+}
+
+//On load
 updateDOM();
 // function fillInDOM() {
     
