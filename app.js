@@ -41,15 +41,13 @@ function getSavedColumns() {
 
 //Set local storage Arrays
 function updateSavedColumns() {
-    // localStorage.setItem("backlogItems", JSON.stringify(backlogListArray));
-    // localStorage.setItem("progressItems", JSON.stringify(progressListArray));    localStorage.setItem("completeItems", JSON.stringify(completeListArray));    localStorage.setItem("onHoldItems", JSON.stringify(onHoldListArray));
     listArrays = [backlogListArray, progressListArray, completeListArray, onHoldListArray];
     arrayNames.forEach((arrayName, index) => {
         localStorage.setItem(`${arrayName}Items`, JSON.stringify(listArrays[index]));
     })
 }
 
-//Creating the DOM
+//Creating the DOM elements
 function createDOMEl(columnEl, column, items, index) {
     const item = document.createElement("li");
     item.classList.add("item");
@@ -57,14 +55,12 @@ function createDOMEl(columnEl, column, items, index) {
     columnEl.appendChild(item);
 }
 
-
-
 //Update the DOM
 function updateDOM() {
     if(!updatedOnLoad) {
         getSavedColumns();
     };
-    
+
     //Backlog Lists
     backlogList.textContent = "";
     backlogListArray.forEach((list, index) => {
@@ -94,6 +90,3 @@ function updateDOM() {
 
 //On load
 updateDOM();
-// function fillInDOM() {
-    
-// }
