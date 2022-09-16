@@ -147,7 +147,7 @@ header .on-hold {
           box-sizing: border-box;
 }
 
-.kanban-container .kanban-item footer .add-btn {
+.kanban-container .kanban-item footer .add-btn, .kanban-container .kanban-item footer .save-btn {
   width: 50%;
   cursor: pointer;
   background-color: transparent;
@@ -162,7 +162,7 @@ header .on-hold {
   transition: all 0.5s;
 }
 
-.kanban-container .kanban-item footer .add-btn:hover {
+.kanban-container .kanban-item footer .add-btn:hover, .kanban-container .kanban-item footer .save-btn:hover {
   background-color: #83d3d4;
   color: #1d4045;
   border-radius: 5px;
