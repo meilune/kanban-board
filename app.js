@@ -49,3 +49,9 @@ function updateSavedColumns() {
 
 getSavedColumns();
 updateSavedColumns();
+
+//Update the DOM
+
+// function updateDOM() {
+
+// }
