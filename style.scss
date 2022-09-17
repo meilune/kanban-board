@@ -91,8 +91,6 @@ header {
         padding: 0.5rem;
         border-radius: 8px;
         margin-bottom: 1rem;
-        // position: relative;
-        // padding-bottom: 80px;
         height:fit-content;
         .kanban-content {
             margin-bottom: 0.5rem;
@@ -111,9 +109,6 @@ header {
             }
         }
         footer {
-            // position: absolute;
-            // bottom: 0;
-            // height: 70px;
             width: 100%;
             display: flex;
             flex-wrap: wrap;
@@ -173,13 +168,6 @@ header {
         background-color: $red;
     }
 }
-
-// #backlog-list.over {
-//     background-color: $yellow;
-// }
-
-
-
 
 @media screen and (min-width: 2640px) {
     .kanban-container {

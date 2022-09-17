@@ -89,27 +89,48 @@ function updateDOM() {
     onHoldListArray.forEach((list, index) => {
         createDOMEl(onHoldList, 0, list, index);
     });
+    updatedOnLoad = true;
     updateSavedColumns();
+}
+
+//Allow arrays to reflect Drag and Drop items
+function rebuildArrays() {
+    backlogListArray = [];
+    for (let i = 0; i < backlogList.children.length; i++) {
+        backlogListArray.push(backlogList.children[i].textContent);
+    }
+    progressListArray = [];
+    for (let i = 0; i < progressList.children.length; i++) {
+        progressListArray.push(progressList.children[i].textContent);
+    }
+    completeListArray = [];
+    for (let i = 0; i < completeList.children.length; i++) {
+        completeListArray.push(completeList.children[i].textContent);
+    }
+    onHoldListArray = [];
+    for (let i = 0; i < onHoldList.children.length; i++) {
+        onHoldListArray.push(onHoldList.children[i].textContent);
+    }
+    updateDOM();
 }
 
 //Function to drag and drop
 function allowDrop(ev) {
     ev.preventDefault();
-  }
-  
-  function drag(ev) {
-    draggedItem = ev.target;
-    console.log(draggedItem);
-    // ev.dataTransfer.setData("text", ev.target.id);
-  }
+}
 
-  function dragEnter(column) {
-    console.log(column);
+function drag(ev) {
+    draggedItem = ev.target;
+}
+
+function dragEnter(column) {
+    //Add styles for the move
     listColumns[column].classList.add("over");
+    //Set the column information:
     currentColumn = column;
-  }
+}
   
-  function drop(ev) {
+function drop(ev) {
     ev.preventDefault();
     //Remove background color
     listColumns.forEach((column) => {
@@ -118,9 +139,8 @@ function allowDrop(ev) {
     //Add item to column
     const parent = listColumns[currentColumn];
     parent.appendChild(draggedItem);
-    // var data = ev.dataTransfer.getData("text");
-    // ev.target.appendChild(document.getElementById(data));
-  }
+    rebuildArrays();
+}
 
 //On load
 updateDOM();
