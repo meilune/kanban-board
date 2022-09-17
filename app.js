@@ -4,7 +4,7 @@ const addItemContainers = document.querySelectorAll(".add-container");
 const addItems = document.querySelectorAll(".add-new-item");
 
 //Item Lists
-const itemLists = document.querySelectorAll(".kanban-item-list");
+const listColumns = document.querySelectorAll(".kanban-item-list");
 const backlogList = document.getElementById("backlog-list");
 const progressList = document.getElementById("progress-list");
 const completeList = document.getElementById("complete-list");
@@ -23,6 +23,7 @@ let listArrays = [];
 const arrayNames = ["backlog", "progress", "complete", "onHold"];
 
 //Drag Functionality
+let draggedItem;
 
 //Local Storage functionality. Get if available, set if not available
 function getSavedColumns() {
@@ -53,24 +54,9 @@ function createDOMEl(columnEl, column, items, index) {
     item.classList.add("item");
     item.textContent = items;
     item.draggable = true;
-    item.addEventListener('dragstart', drag)
+    item.setAttribute("ondragstart", "drag(event)");
     columnEl.appendChild(item);
 }
-
-//Function to drag and drop
-function allowDrop(ev) {
-    ev.preventDefault();
-  }
-  
-  function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-  }
-  
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-  }
 
 //Update the DOM
 function updateDOM() {
@@ -104,6 +90,31 @@ function updateDOM() {
     });
     updateSavedColumns();
 }
+
+//Function to drag and drop
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    draggedItem = ev.target;
+    console.log(draggedItem);
+    // ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function dragEnter(column) {
+    listColumns[column].classList.add("over");
+  }
+  
+  function drop(ev) {
+    ev.preventDefault();
+    //Remove background color
+    listColumns.forEach((column) => {
+        column.classList.remove("over");
+    });
+    // var data = ev.dataTransfer.getData("text");
+    // ev.target.appendChild(document.getElementById(data));
+  }
 
 //On load
 updateDOM();

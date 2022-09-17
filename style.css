@@ -182,6 +182,27 @@ header .on-hold {
   max-height: 52vh;
 }
 
+.over {
+  padding: 50px 20px;
+  border-radius: 8px;
+}
+
+.over#backlog-list.over {
+  background-color: #e2ad3b;
+}
+
+.over#progress-list.over {
+  background-color: #1d4045;
+}
+
+.over#complete-list.over {
+  background-color: #33777d;
+}
+
+.over#on-hold-list.over {
+  background-color: #902617;
+}
+
 @media screen and (min-width: 2640px) {
   .kanban-container .kanban-item {
     width: 450px;
