@@ -33,7 +33,7 @@ function getSavedColumns() {
         onHoldListArray = JSON.parse(localStorage.onHoldItems);
     } else {
         backlogListArray = ["Read a book", "Train spanish for 15min"];
-        progressListArray = ["Complete development project", "Finish watching the drama"];
+        progressListArray = ["Complete development project", "Finish watching the drama", "Plant flowers"];
         completeListArray = ["Drink coffee", "Exercise for 20min"];
         onHoldListArray = ["Return items", "Fill in the questionnaire"];
     }
@@ -52,8 +52,25 @@ function createDOMEl(columnEl, column, items, index) {
     const item = document.createElement("li");
     item.classList.add("item");
     item.textContent = items;
+    item.draggable = true;
+    item.addEventListener('dragstart', drag)
     columnEl.appendChild(item);
 }
+
+//Function to drag and drop
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+  
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }
 
 //Update the DOM
 function updateDOM() {
