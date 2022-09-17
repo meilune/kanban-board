@@ -121,6 +121,7 @@ header .on-hold {
 .kanban-container .kanban-item .kanban-content .kanban-item-list {
   -webkit-padding-start: 0;
           padding-inline-start: 0;
+  min-height: 20px;
 }
 
 .kanban-container .kanban-item .kanban-content .kanban-item-list .item {
@@ -183,8 +184,10 @@ header .on-hold {
 }
 
 .over {
-  padding: 50px 20px;
+  padding: 10px 10px 50px 10px;
   border-radius: 8px;
+  -webkit-padding-start: 10px !important;
+          padding-inline-start: 10px !important;
 }
 
 .over#backlog-list.over {

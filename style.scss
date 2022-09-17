@@ -99,6 +99,7 @@ header {
             border-radius: 5px;
             .kanban-item-list {
                 padding-inline-start: 0;
+                min-height: 20px;
                 .item {
                     background-color: rgba($black, 0.6);
                     padding: 0.5rem 1rem;
@@ -156,8 +157,9 @@ header {
 }
 
 .over {
-    padding: 50px 20px;
+    padding: 10px 10px 50px 10px;
     border-radius: 8px;
+    padding-inline-start: 10px !important;
     &#backlog-list.over {
             background-color: $yellow;
         }

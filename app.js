@@ -24,6 +24,7 @@ const arrayNames = ["backlog", "progress", "complete", "onHold"];
 
 //Drag Functionality
 let draggedItem;
+let currentColumn;
 
 //Local Storage functionality. Get if available, set if not available
 function getSavedColumns() {
@@ -103,7 +104,9 @@ function allowDrop(ev) {
   }
 
   function dragEnter(column) {
+    console.log(column);
     listColumns[column].classList.add("over");
+    currentColumn = column;
   }
   
   function drop(ev) {
@@ -112,6 +115,9 @@ function allowDrop(ev) {
     listColumns.forEach((column) => {
         column.classList.remove("over");
     });
+    //Add item to column
+    const parent = listColumns[currentColumn];
+    parent.appendChild(draggedItem);
     // var data = ev.dataTransfer.getData("text");
     // ev.target.appendChild(document.getElementById(data));
   }
