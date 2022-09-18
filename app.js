@@ -149,24 +149,25 @@ function addNewItem(i) {
     addBtns[i].hidden = true;
 }
 
+//Saving the information
+function saveLists(i) {
+    if(addItems[i].innerHTML) {
+        const itemInnerText = addItems[i].innerHTML;
+        const selectedArray = listArrays[i];
+        selectedArray.push(itemInnerText);
+        addItems[i].innerHTML = "";
+        updateDOM();
+    } else {
+        alert("Please fill in the text before saving");
+    }
+}
+
 //Function to hide input DOM and save the information
 function saveNewItem(i) {
     addItemContainers[i].hidden = true;
     saveBtns[i].hidden = true;
     addBtns[i].hidden = false;
-    if(i === 0) {
-        backlogListArray.push(addItems[i].innerHTML);
-    }
-    if(i === 1) {
-        progressListArray.push(addItems[i].innerHTML);
-    }
-    if(i === 2) {
-        completeListArray.push(addItems[i].innerHTML);
-    }
-    if(i === 3) {
-        onHoldListArray.push(addItems[i].innerHTML);
-    }
-    updateDOM();
+    saveLists(i);
 }
 
 //Event listener for enter key to prevent creating new elements
