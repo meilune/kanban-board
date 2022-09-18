@@ -49,13 +49,26 @@ function updateSavedColumns() {
     })
 }
 
+//Filter Arrays to remove empty items
+// function filterArray(array) {
+//  console.log(array);
+//  const filteredArray = array.filter(item => item !== null);
+//  console.log(filteredArray);
+//  return filteredArray
+// }
+
 //Creating the DOM elements
 function createDOMEl(columnEl, column, items, index) {
+    console.log("this is column:", column);
+    console.log("this is index:", index);
     const item = document.createElement("li");
     item.classList.add("item");
     item.textContent = items;
     item.draggable = true;
     item.setAttribute("ondragstart", "drag(event)");
+    item.contentEditable = true;
+    // item.id = index;
+    // item.setAttribute("onfocusout", `updateItem(${index}, ${column})`);
     columnEl.appendChild(item);
 }
 
@@ -70,27 +83,43 @@ function updateDOM() {
     backlogListArray.forEach((list, index) => {
         createDOMEl(backlogList, 0, list, index);
     });
-
+    // backlogListArray = filterArray(backlogListArray);
     //Progress Lists
     progressList.textContent = "";
     progressListArray.forEach((list, index) => {
-        createDOMEl(progressList, 0, list, index);
+        createDOMEl(progressList, 1, list, index);
     });
-
+    // progressListArray = filterArray(progressListArray);
     //Completed Lists
     completeList.textContent = "";
     completeListArray.forEach((list, index) => {
-        createDOMEl(completeList, 0, list, index);
+        createDOMEl(completeList, 2, list, index);
     });
-
+    // completeListArray = filterArray(completeListArray);
     //On Hold Lists
     onHoldList.textContent = "";
     onHoldListArray.forEach((list, index) => {
-        createDOMEl(onHoldList, 0, list, index);
+        createDOMEl(onHoldList, 3, list, index);
     });
+    // onHoldListArray = filterArray(onHoldListArray);
+
     updatedOnLoad = true;
     updateSavedColumns();
 }
+
+//Update Item - Delete if neccesary or update Array value
+// function updateItem(index, column) {
+//     const selectedArray = listArrays[column];
+//     console.log(selectedArray);
+
+//     const selectedItem = listColumns[column].children;
+//     console.log(selectedItem[index].textContent);
+//     if(!selectedItem[index].textContent) {
+//         delete selectedArray[index];
+//     }
+//     console.log(selectedArray);
+//     updateDOM();
+// }
 
 //Allow arrays to reflect Drag and Drop items
 function rebuildArrays() {

@@ -133,6 +133,12 @@ header .on-hold {
   list-style: none;
 }
 
+.kanban-container .kanban-item .kanban-content .kanban-item-list .item:focus {
+  outline: none !important;
+  background-color: #fff;
+  color: #1d4045;
+}
+
 .kanban-container .kanban-item footer {
   width: 100%;
   display: -webkit-box;

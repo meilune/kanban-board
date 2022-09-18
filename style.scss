@@ -105,6 +105,11 @@ header {
                     margin-bottom: 0.5rem;
                     cursor: pointer;
                     list-style: none;
+                    &:focus {
+                        outline: none !important;
+                        background-color: $white;
+                        color: $teal;
+                    }
                 }
             }
         }
