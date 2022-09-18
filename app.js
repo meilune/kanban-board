@@ -149,7 +149,7 @@ function addNewItem(i) {
     addBtns[i].hidden = true;
 }
 
-//Function to hide input DOM
+//Function to hide input DOM and save the information
 function saveNewItem(i) {
     addItemContainers[i].hidden = true;
     saveBtns[i].hidden = true;
@@ -169,10 +169,12 @@ function saveNewItem(i) {
     updateDOM();
 }
 
-
-// function saveItem() {
-
-// }
+//Event listener for enter key to prevent creating new elements
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  });
 
 //On load
 updateDOM();
