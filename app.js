@@ -69,7 +69,6 @@ function updateDOM() {
     backlogList.textContent = "";
     backlogListArray.forEach((list, index) => {
         createDOMEl(backlogList, 0, list, index);
-        console.log(list);
     });
 
     //Progress Lists
@@ -118,18 +117,19 @@ function rebuildArrays() {
 function allowDrop(ev) {
     ev.preventDefault();
 }
-
+//Save information of the picked item
 function drag(ev) {
     draggedItem = ev.target;
 }
 
+//Add style to columns for visual difference and save that information
 function dragEnter(column) {
     //Add styles for the move
     listColumns[column].classList.add("over");
     //Set the column information:
     currentColumn = column;
 }
-  
+//Drop the item functionality 
 function drop(ev) {
     ev.preventDefault();
     //Remove background color
@@ -141,6 +141,38 @@ function drop(ev) {
     parent.appendChild(draggedItem);
     rebuildArrays();
 }
+
+//Function to show DOM of input
+function addNewItem(i) {
+    addItemContainers[i].hidden = false;
+    saveBtns[i].hidden = false;
+    addBtns[i].hidden = true;
+}
+
+//Function to hide input DOM
+function saveNewItem(i) {
+    addItemContainers[i].hidden = true;
+    saveBtns[i].hidden = true;
+    addBtns[i].hidden = false;
+    if(i === 0) {
+        backlogListArray.push(addItems[i].innerHTML);
+    }
+    if(i === 1) {
+        progressListArray.push(addItems[i].innerHTML);
+    }
+    if(i === 2) {
+        completeListArray.push(addItems[i].innerHTML);
+    }
+    if(i === 3) {
+        onHoldListArray.push(addItems[i].innerHTML);
+    }
+    updateDOM();
+}
+
+
+// function saveItem() {
+
+// }
 
 //On load
 updateDOM();

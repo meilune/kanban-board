@@ -116,6 +116,7 @@ header {
             padding: 0.5rem;
             box-sizing: border-box;
             .add-btn, .save-btn {
+                float: right;
                 width: 50%;
                 cursor: pointer;
                 background-color: transparent;
@@ -134,6 +135,10 @@ header {
                     // width:fit-content;
                 }
             }
+            .save-btn {
+                float: right;
+                margin-left: 50%;
+            }
             .add-container {
                 margin-top: 1rem;
                 background-color: $white;
@@ -141,6 +146,19 @@ header {
                 height: 100px;
                 border: solid 2px $teal;
                 border-radius: 10px;
+                .add-new-item {
+                    box-sizing: border-box;
+                    padding: 0.5rem;
+                    height: 100%;
+                    color: $teal;
+                    border-radius: 8px;
+                    // overflow: hidden;
+                    overflow-y: scroll;
+                    &:focus {
+                        outline: none !important;
+                        border: 3px solid $ligthblue;
+                    }
+                }
             }
         }
     }
