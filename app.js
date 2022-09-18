@@ -50,12 +50,10 @@ function updateSavedColumns() {
 }
 
 //Filter Arrays to remove empty items
-// function filterArray(array) {
-//  console.log(array);
-//  const filteredArray = array.filter(item => item !== null);
-//  console.log(filteredArray);
-//  return filteredArray
-// }
+function filterArray(array) {
+    const filteredArray = array.filter(item => item !== "");
+    return filteredArray;
+}
 
 //Creating the DOM elements
 function createDOMEl(columnEl, column, items, index) {
@@ -66,7 +64,7 @@ function createDOMEl(columnEl, column, items, index) {
     item.setAttribute("ondragstart", "drag(event)");
     item.contentEditable = true;
     item.id = index;
-    // item.setAttribute("onfocusout", `updateItem(${index}, ${column})`);
+    item.setAttribute("onfocusout", `updateItem(${index}, ${column})`);
     columnEl.appendChild(item);
 }
 
@@ -81,28 +79,42 @@ function updateDOM() {
     backlogListArray.forEach((list, index) => {
         createDOMEl(backlogList, 0, list, index);
     });
-    // backlogListArray = filterArray(backlogListArray);
+    backlogListArray = filterArray(backlogListArray);
+
     //Progress Lists
     progressList.textContent = "";
     progressListArray.forEach((list, index) => {
         createDOMEl(progressList, 1, list, index);
     });
-    // progressListArray = filterArray(progressListArray);
+    progressListArray = filterArray(progressListArray);
     //Completed Lists
     completeList.textContent = "";
     completeListArray.forEach((list, index) => {
         createDOMEl(completeList, 2, list, index);
     });
-    // completeListArray = filterArray(completeListArray);
+    completeListArray = filterArray(completeListArray);
     //On Hold Lists
     onHoldList.textContent = "";
     onHoldListArray.forEach((list, index) => {
         createDOMEl(onHoldList, 3, list, index);
     });
-    // onHoldListArray = filterArray(onHoldListArray);
+    onHoldListArray = filterArray(onHoldListArray);
 
     updatedOnLoad = true;
     updateSavedColumns();
+}
+
+//Update Item - Delete if neccesary or update Array value
+function updateItem(index, column) {
+    const selectedArray = listArrays[column];
+    const selectedItem = listColumns[column].children;
+    if(!selectedItem[index].textContent) {
+        delete selectedArray[index];
+    } else {
+        selectedArray[index] = selectedItem[index].textContent;
+    }
+    // rebuildArrays();
+    updateDOM();
 }
 
 //Allow arrays to reflect Drag and Drop items
@@ -133,7 +145,6 @@ function allowDrop(ev) {
 //Save information of the picked item
 function drag(ev) {
     draggedItem = ev.target;
-    console.log(draggedItem);
 }
 
 //Add style to columns for visual difference and save that information
@@ -152,8 +163,6 @@ function drop(ev) {
     });
     //Add item to column
     const parent = listColumns[currentColumn];
-    console.log(parent);
-    console.log(draggedItem);
     parent.appendChild(draggedItem);
     rebuildArrays();
 }
@@ -184,20 +193,6 @@ function saveNewItem(i) {
     saveBtns[i].hidden = true;
     addBtns[i].hidden = false;
     saveLists(i);
-}
-
-//Update Item - Delete if neccesary or update Array value
-function updateItem(index, column) {
-    const selectedArray = listArrays[column];
-    console.log(selectedArray);
-    const selectedItem = listColumns[column].children;
-    console.log(selectedItem[index].textContent);
-    if(!selectedItem[index].textContent) {
-        delete selectedArray[index];
-    }
-    rebuildArrays();
-    updateSavedColumns();
-    console.log(selectedArray);
 }
 
 //Event listener for enter key to prevent creating new elements
