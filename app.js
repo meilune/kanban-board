@@ -24,6 +24,7 @@ const arrayNames = ["backlog", "progress", "complete", "onHold"];
 
 //Drag Functionality
 let draggedItem;
+let dragging = false;
 let currentColumn;
 
 //Local Storage functionality. Get if available, set if not available
@@ -108,13 +109,15 @@ function updateDOM() {
 function updateItem(index, column) {
     const selectedArray = listArrays[column];
     const selectedItem = listColumns[column].children;
-    if(!selectedItem[index].textContent) {
-        delete selectedArray[index];
-    } else {
-        selectedArray[index] = selectedItem[index].textContent;
+    //Functionality adjustments to prevent error of Blur when item is not allowed to be dragged.
+    if(!dragging) {
+        if(!selectedItem[index].textContent) {
+            delete selectedArray[index];
+        } else {
+            selectedArray[index] = selectedItem[index].textContent;
+        }
+        updateDOM();
     }
-    // rebuildArrays();
-    updateDOM();
 }
 
 //Allow arrays to reflect Drag and Drop items
@@ -145,6 +148,7 @@ function allowDrop(ev) {
 //Save information of the picked item
 function drag(ev) {
     draggedItem = ev.target;
+    dragging = true;
 }
 
 //Add style to columns for visual difference and save that information
@@ -164,6 +168,7 @@ function drop(ev) {
     //Add item to column
     const parent = listColumns[currentColumn];
     parent.appendChild(draggedItem);
+    dragging = false;
     rebuildArrays();
 }
 
