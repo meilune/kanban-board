@@ -59,15 +59,13 @@ function updateSavedColumns() {
 
 //Creating the DOM elements
 function createDOMEl(columnEl, column, items, index) {
-    console.log("this is column:", column);
-    console.log("this is index:", index);
     const item = document.createElement("li");
     item.classList.add("item");
     item.textContent = items;
     item.draggable = true;
     item.setAttribute("ondragstart", "drag(event)");
     item.contentEditable = true;
-    // item.id = index;
+    item.id = index;
     // item.setAttribute("onfocusout", `updateItem(${index}, ${column})`);
     columnEl.appendChild(item);
 }
@@ -107,20 +105,6 @@ function updateDOM() {
     updateSavedColumns();
 }
 
-//Update Item - Delete if neccesary or update Array value
-// function updateItem(index, column) {
-//     const selectedArray = listArrays[column];
-//     console.log(selectedArray);
-
-//     const selectedItem = listColumns[column].children;
-//     console.log(selectedItem[index].textContent);
-//     if(!selectedItem[index].textContent) {
-//         delete selectedArray[index];
-//     }
-//     console.log(selectedArray);
-//     updateDOM();
-// }
-
 //Allow arrays to reflect Drag and Drop items
 function rebuildArrays() {
     backlogListArray = [];
@@ -149,6 +133,7 @@ function allowDrop(ev) {
 //Save information of the picked item
 function drag(ev) {
     draggedItem = ev.target;
+    console.log(draggedItem);
 }
 
 //Add style to columns for visual difference and save that information
@@ -167,6 +152,8 @@ function drop(ev) {
     });
     //Add item to column
     const parent = listColumns[currentColumn];
+    console.log(parent);
+    console.log(draggedItem);
     parent.appendChild(draggedItem);
     rebuildArrays();
 }
@@ -197,6 +184,20 @@ function saveNewItem(i) {
     saveBtns[i].hidden = true;
     addBtns[i].hidden = false;
     saveLists(i);
+}
+
+//Update Item - Delete if neccesary or update Array value
+function updateItem(index, column) {
+    const selectedArray = listArrays[column];
+    console.log(selectedArray);
+    const selectedItem = listColumns[column].children;
+    console.log(selectedItem[index].textContent);
+    if(!selectedItem[index].textContent) {
+        delete selectedArray[index];
+    }
+    rebuildArrays();
+    updateSavedColumns();
+    console.log(selectedArray);
 }
 
 //Event listener for enter key to prevent creating new elements
