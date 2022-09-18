@@ -233,6 +233,13 @@ header .on-hold {
   background-color: #902617;
 }
 
+[contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+   -ms-user-select: text;
+       user-select: text;
+}
+
 @media screen and (min-width: 2640px) {
   .kanban-container .kanban-item {
     width: 450px;

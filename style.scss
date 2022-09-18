@@ -192,6 +192,11 @@ header {
     }
 }
 
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
 @media screen and (min-width: 2640px) {
     .kanban-container {
         .kanban-item {
